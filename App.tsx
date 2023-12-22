@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import LoginForm from "./src/login-form";
+import InitialAnimation from "./src/opening-animation";
+import { View } from "react-native";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
-export default function App() {
+const App = () => {
+  const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
+
+  const onAnimationEnd = () => {
+    setIsInitialAnimationDone(true);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View className={"bg-white dark:bg-black"}>
+      {!isInitialAnimationDone ? (
+        <Animated.View
+          entering={FadeIn}
+          exiting={FadeOut}
+          className={"block self-center w-full h-full"}
+        >
+          <InitialAnimation onAnimationEnd={onAnimationEnd} />
+        </Animated.View>
+      ) : (
+        <Animated.View
+          entering={FadeIn}
+          exiting={FadeOut}
+          className={"block self-center w-full h-full"}
+        >
+          <LoginForm />
+        </Animated.View>
+      )}
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

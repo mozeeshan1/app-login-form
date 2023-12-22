@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -15,16 +15,25 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "jsEngine": "jsc",
+      "bundleIdentifier": "com.mozeeshan.LoginFormApp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mozeeshan.LoginFormApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "jsEngine": "hermes",
+    "extra": {
+      "eas": {
+        "projectId": "5ca9501d-fc58-414a-9dee-1694a20f9396"
+      }
     }
   }
 }
